@@ -1,0 +1,20 @@
+.todo-list__main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.add-task-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-task-field button {
+  margin-top: 15px;
+  font-size: 17px;
+  padding: 5px 35px;
+}

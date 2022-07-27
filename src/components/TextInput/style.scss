@@ -1,0 +1,46 @@
+.todo-list {
+  &__single-page {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__task-container {
+    display: flex;
+    flex-direction: row;
+    border: 0px solid black;
+    border-radius: 20%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background: rgb(241, 58, 58);
+  }
+
+  &__task-container button {
+    margin-left: 10px;
+  }
+
+  &__task-container img:hover {
+    cursor: pointer;
+  }
+
+  &-button {
+    display: flex;
+    flex-direction: row;
+    border: 0px;
+    height: 24px;
+    width: 24px;
+    background: none;
+  }
+}
+
+.container__unchecked {
+  display: flex;
+  flex-direction: row;
+  border: 0px solid black;
+  border-radius: 20%;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  background: rgb(241, 58, 58);
+}
