@@ -47,7 +47,9 @@ const Task = ({ tasks, setTasks, setError, task }) => {
 
   return (<div className={task.isCheck ? 'todo-list__task-container container__checked' : 'todo-list__task-container container__unchecked'}
   id={`container-${task._id}`}>
-    <input type="checkbox" onChange={() => handleCheckbox(task._id, task.isCheck)} checked={task.isCheck}/>
+    <input type="checkbox" 
+      onChange={() => handleCheckbox(task._id, task.isCheck)} 
+      checked={task.isCheck}/>
     <p className={task.isCheck ? 'todo-list__text-task todo-list__done-text' : 'todo-list__text-task'}>{task.text}</p>
     <button className={task.isCheck ? 'todo-list__hide' : 'todo-list-button edit'} 
       onClick={() => {editTask(task._id)}}
