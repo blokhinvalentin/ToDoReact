@@ -1,20 +1,7 @@
 .todo-list {
-  &__single-page {
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
   &__task-container {
     display: flex;
-    flex-direction: row;
-    border: 0px solid black;
-    border-radius: 20%;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    background: rgb(241, 58, 58);
+    align-items: center;
   }
 
   &__task-container button {
@@ -25,6 +12,17 @@
     cursor: pointer;
   }
 
+  &__text-task {
+    font-size: 18px;
+    color: white;
+    margin-left: 8px;
+  }
+
+  &__done-text {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: line-through;
+  }
+
   &-button {
     display: flex;
     flex-direction: row;
@@ -32,6 +30,10 @@
     height: 24px;
     width: 24px;
     background: none;
+  }
+
+  &__hide {
+    display: none;
   }
 }
 
@@ -45,7 +47,7 @@
     margin-bottom: 10px;
     background: rgb(241, 58, 58);
   }
-  
+
   &__checked {
     background: rgb(21, 185, 21);
   }

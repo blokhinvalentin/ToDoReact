@@ -1,13 +1,25 @@
-import React from "react";
-
-import ShowAddOption from "../ShowAddOption/ShowAddOption";
+import { useState, useEffect } from 'react';
+import { getTasks } from "../../service/Requests";
+import AddTaskField from "../AddTaskField/AddTaskField";
 import ShowTasks from "../ShowTasks/ShowTasks";
 
-import './style.scss';
+const MainPage = () => {
+  const [tasks, setTasks] = useState([]);
+  const [error, setError] = useState('');
 
-const MainPage = ({ tasks, setTasks, error, setError }) => {
+  const getAllTasks = async () => {
+    const resp = await getTasks();
+    if (resp.statusText === 'OK') {
+      setTasks(resp.data);
+    }
+  };
+
+  useEffect(() => {
+    getAllTasks();
+  }, []);
+
   return (<>
-    <ShowAddOption tasks={tasks} setTasks={setTasks} error={error} setError={setError}/>
+    <AddTaskField tasks={tasks} setTasks={setTasks} error={error} setError={setError}/>
     <ShowTasks tasks={tasks} setTasks={setTasks} error={error} setError={setError}/>
   </>)
 }

@@ -1,37 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-
 import ShowError from "../ShowError/ShowError";
+import { getTasks, confirmTaskEditing } from "../../service/Requests";
 
 import done from '../../img/done.svg';
 import close from '../../img/close.svg';
 import './style.scss';
 
-const TextInput = ({ tasks, setTasks, error, setError }) => {
+const TaskEditing = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const host = `http://localhost:8000/tasks`;
-  let previousText = '';
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]._id === id) {
-      previousText = tasks[i].text;
+  const [tasks, setTasks] = useState([]);
+  const [error, setError] = useState('');
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    const getAllTasks = async () => {
+      const resp = await getTasks();
+      if (resp.statusText === 'OK') {
+        setTasks(resp.data);
+      }
+    };
+    getAllTasks();
+  }, []);
+
+  useEffect(() => {
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i]._id === id) {
+        setText(tasks[i].text);
+      }
     }
-  }
-  console.log(previousText);
+  }, [tasks])
 
-  const [text, setText] = useState(previousText);
-
-  const confirmTaskEditing = async (id) => {
+  const saveTaskEditing = async (id) => {
     try {
-      await axios.patch(`${host}/${id}/text`, { text: text }).then(result => {
+      const resp = await confirmTaskEditing(id, text);
+      if (resp.statusText === 'OK') {
         navigate("/tasks");
         for (let i = 0; i < tasks.length; i++) {
           if (tasks[i]._id === id) {
-            tasks[i] = result.data;
+            tasks[i] = resp.data;
           }
         }
-      })
+      }
     } catch (error) {
       setError('unable to update text');
     } 
@@ -46,8 +57,8 @@ const TextInput = ({ tasks, setTasks, error, setError }) => {
   <div className="todo-list__single-page">
     <ShowError errorMessage={error}/>
     <div className="todo-list__task-container container__unchecked" id={`container-${id}`}>
-      <input type="text" value={text} onChange={(inp) => setText(inp.target.value)} autoFocus/>
-      <button className="todo-list-button" onClick={() => {confirmTaskEditing(id)}}>
+      <input type="text" value={text} onChange={(event) => setText(event.target.value)} autoFocus/>
+      <button className="todo-list-button" onClick={() => {saveTaskEditing(id)}}>
         <img src={done} alt=""/>
       </button>
       <button className="todo-list-button" onClick={() => {cancelTaskEditing()}}>
@@ -58,4 +69,4 @@ const TextInput = ({ tasks, setTasks, error, setError }) => {
   )
 }
 
-export default TextInput;
+export default TaskEditing;

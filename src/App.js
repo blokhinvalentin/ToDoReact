@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-import ShowAddOption from './components/ShowAddOption/ShowAddOption';
-import ShowTasks from './components/ShowTasks/ShowTasks';
-import ShowPage from './components/ShowPage/ShowPage';
-
+import { Routes, Route } from 'react-router-dom';
+import TextInput from "../src/components/TextInput/TextInput";
+import MainPage from "../src/components/MainPage/MainPage";
 import './App.scss';
 
 function App() { 
 
-  return (<>
-  <ShowPage/>
-  </>
+  return (
+  <Routes>
+    <Route path="/tasks" element={<MainPage/>}/>
+    <Route path={`/tasks/:id/text`} element={<TextInput/>}/>
+  </Routes>
   );
 }
 
