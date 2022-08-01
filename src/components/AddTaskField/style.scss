@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex: {
+    direction: column;
+  }
   margin-bottom: 30px;
 }
 
@@ -10,11 +12,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-}
+  flex: {
+    direction: column;
+  }
 
-.add-task button {
-  margin-top: 15px;
-  font-size: 17px;
-  padding: 5px 35px;
+  & button {
+    margin: {
+      top: 15px;
+    }
+    font: {
+      size: 17px;
+    }
+    padding: 5px 35px;
+  }
 }

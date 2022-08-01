@@ -2,51 +2,63 @@
   &__single-page {
     height: 40vh;
     display: flex;
-    flex-direction: column;
+    flex: {
+      direction: column;
+    }
     align-items: center;
     justify-content: center;
   }
 
   &__task-container {
     display: flex;
-    flex-direction: row;
-    border: 0px solid black;
-    border-radius: 20%;
+    flex: {
+      direction: row;
+    }
     padding: 10px 15px;
-    margin-bottom: 10px;
+    margin: {
+      bottom: 10px;
+    }
     background: rgb(241, 58, 58);
-  }
+    border: 0px solid black {
+      radius: 20%;
+    }
 
-  &__task-container button {
-    margin-left: 10px;
-  }
+    & button {
+      margin: {
+        left: 10px;
+      }
+    }
 
-  &__task-container img:hover {
-    cursor: pointer;
+    & img:hover {
+      cursor: pointer;
+    }
+    
+    &__unchecked {
+      display: flex;
+      flex: {
+        direction: row;
+      }
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      background: rgb(241, 58, 58);
+      border: 0px solid black {
+        radius: 20%;
+      }
+    }
+    
+    &__checked {
+      background: rgb(21, 185, 21);
+    }
   }
 
   &-button {
     display: flex;
-    flex-direction: row;
+    flex: {
+      direction: row;
+    }
     border: 0px;
     height: 24px;
     width: 24px;
     background: none;
-  }
-}
-
-.container {
-  &__unchecked {
-    display: flex;
-    flex-direction: row;
-    border: 0px solid black;
-    border-radius: 20%;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    background: rgb(241, 58, 58);
-  }
-  
-  &__checked {
-    background: rgb(21, 185, 21);
   }
 }
