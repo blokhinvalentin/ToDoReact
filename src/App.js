@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import TextInput from '../src/components/TextInput/TextInput';
-import MainPage from '../src/components/MainPage/MainPage';
+import { TextInput, MainPage } from '../src/components/index';
 import './App.scss';
 
 const App = () => { 

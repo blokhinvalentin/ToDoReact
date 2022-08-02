@@ -1,5 +1,7 @@
 .error-red {
-  font-size: 25px;
+  font: {
+    size: 25px;
+    weight: 500;
+  }
   color: red;
-  font-weight: 500;
 }

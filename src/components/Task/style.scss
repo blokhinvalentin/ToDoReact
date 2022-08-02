@@ -1,22 +1,32 @@
 .todo-list {
   &__task-container {
     display: flex;
-    flex-direction: row;
+    flex: {
+      direction: row;
+    }
     align-items: center;
 
     &__unchecked {
       display: flex;
-      flex-direction: row;
       align-items: center;
+      padding: 10px 15px;
+      background: rgb(241, 58, 58);
+      flex: {
+        direction: row;
+      }
+
       border: 0px solid black {
         radius: 20%;
       }
-      padding: 10px 15px;
-      margin-bottom: 10px;
-      background: rgb(241, 58, 58);
+
+      margin: {
+        bottom: 10px;
+      }
 
       & button {
-        margin-left: 10px;
+        margin: {
+          left: 10px;
+        }
       }
   
       & img:hover {
@@ -26,14 +36,20 @@
   
     &__checked {
       display: flex;
-      flex-direction: row;
       align-items: center;
+      padding: 10px 15px;
+      background: rgb(21, 185, 21);
+      flex: {
+        direction: row;
+      }
+
       border: 0px solid black {
         radius: 20%;
       }
-      padding: 10px 15px;
-      margin-bottom: 10px;
-      background: rgb(21, 185, 21);
+
+      margin: {
+        bottom: 10px;
+      }
   
       & img:hover {
         cursor: pointer;
@@ -60,13 +76,13 @@
 
   &-button {
     display: flex;
-    flex: {
-      direction: row;
-    }
     border: 0px;
     height: 24px;
     width: 24px;
     background: none;
+    flex: {
+      direction: row;
+    }
   }
 
   &__hide {
