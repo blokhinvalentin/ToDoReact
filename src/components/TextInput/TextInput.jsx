@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { ShowError } from "../index";
-import { getTasks, confirmTaskEditing } from "../../service/requests";
-import done from "../../img/done.svg";
-import close from "../../img/close.svg";
-import "./style.scss";
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ShowError } from '../index';
+import { getTasks, confirmTaskEditing } from '../../service/requests';
+import done from '../../img/done.svg';
+import close from '../../img/close.svg';
+import './style.scss';
 
 const TaskEditing = () => {
   const { id } = useParams();

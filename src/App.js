@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { TextInput, MainPage } from '../src/components/index';
+import { TextInput, MainPage } from '../src/components';
 import './App.scss';
 
 const App = () => { 

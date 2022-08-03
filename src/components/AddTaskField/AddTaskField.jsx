@@ -1,5 +1,5 @@
-import { ShowError } from "../index";
-import "./style.scss";
+import { ShowError } from '../';
+import './style.scss';
 
 const AddTaskField = ({ error, addNewTask, text, setText }) => {
   return (

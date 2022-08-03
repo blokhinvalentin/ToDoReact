@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { AddTaskField, Task } from "../index";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AddTaskField, Task } from '../index';
 import {
   getTasks,
   addTask,
   changeCheckbox,
   deleteTask,
-} from "../../service/requests";
-import "./style.scss";
+} from '../../service/requests';
+import './style.scss';
 
 const MainPage = () => {
   const [tasks, setTasks] = useState([]);
@@ -88,24 +88,17 @@ const MainPage = () => {
     <>
       <AddTaskField
         error={error}
-
         addNewTask={addNewTask}
-
         text={text}
-
         setText={setText}
       />
       <div className="todo-list__content-page">
         {tasks.map((task) => (
           <Task
             key={task._id}
-
             task={task}
-
             handleCheckbox={handleCheckbox}
-
             removeTask={removeTask}
-            
             editTask={editTask}
           />
         ))}
