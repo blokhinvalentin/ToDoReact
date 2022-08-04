@@ -45,25 +45,20 @@ const TaskEditing = () => {
   return (
     <div className="todo-list__single-page">
       <ShowError errorMessage={error} />
+
       <div
         className="todo-list__task-container container__unchecked"
-        
         id={`container-${id}`}
       >
         <input
           type="text"
-
           value={text}
-
           onChange={(event) => setText(event.target.value)}
-
           placeholder={task.text}
-
           autoFocus
         />
         <button
           className="todo-list-button"
-
           onClick={() => saveTaskEditing(id)}
         >
           <img src={done} alt="" />
@@ -72,6 +67,7 @@ const TaskEditing = () => {
           <img src={close} alt="" />
         </button>
       </div>
+      
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { TextInput, MainPage } from '../src/components';
+import { ChangeTextPage, MainPage } from '../src/components';
 import './App.scss';
 
 const App = () => { 
@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/tasks" element={<MainPage/>} />
-      <Route path={`/tasks/:id/text`} element={<TextInput/>} />
+      <Route path={`/tasks/:id/text`} element={<ChangeTextPage/>} />
     </Routes>
   );
 }
