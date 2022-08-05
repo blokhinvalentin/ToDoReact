@@ -7,7 +7,7 @@ import {
   changeCheckbox,
   deleteTask,
 } from '../../service/requests';
-import { sortByIsCheck } from '../../service/helpers';
+import { sortByIsCheck, sortByDate } from '../../service/helpers';
 import './style.scss';
 
 const MainPage = () => {
@@ -19,12 +19,10 @@ const MainPage = () => {
 
   const getAllTasks = async () => {
     try {
-      if (tasks.length === 0) {
-        const resp = await getTasks();
-        if (resp.statusText === 'OK') {
-          setTasks(resp.data);
-          setSortableTasks(resp.data);
-        }
+      const resp = await getTasks();
+      if (resp.statusText === 'OK') {
+        setTasks(resp.data);
+        setSortableTasks(resp.data);
       }
     } catch (error) {
       setError('unable to get all tasks');
@@ -36,9 +34,7 @@ const MainPage = () => {
       const resp = await addTask(text);
       if (resp.statusText === 'OK' && text !== '') {
         setTasks([...tasks, resp.data]);
-        setSortableTasks([...sortableTasks, resp.data].sort((a, b) => {
-            return (a.isCheck > b.isCheck) ? 1 : a.isCheck < b.isCheck ? -1 : 0;
-          }));
+        setSortableTasks(sortByIsCheck([...tasks, resp.data]));
         setText('');
         setError('');
       }
@@ -57,11 +53,7 @@ const MainPage = () => {
             break;
           }
         }
-        setSortableTasks(
-          [...tasks].sort((a, b) => {
-            return (a.isCheck > b.isCheck) ? 1 : a.isCheck < b.isCheck ? -1 : 0;
-          })
-        );
+        setSortableTasks(sortByIsCheck([...tasks]));
         setError('');
       }
     } catch (error) {
@@ -87,13 +79,9 @@ const MainPage = () => {
     setError('');
   };
 
-  const sortArray = (array) => {
-    return sortByIsCheck();
-  }
-
   useEffect(() => {
     getAllTasks();
-  }, [sortableTasks]);
+  }, []);
 
   console.log('tasks', tasks);
   console.log('sortableTasks', sortableTasks);
@@ -106,6 +94,7 @@ const MainPage = () => {
         text={text}
         setText={setText}
       />
+
       <div className="todo-list__content-page">
         {sortableTasks.map((task) => (
           <Task

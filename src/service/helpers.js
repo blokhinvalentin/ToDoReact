@@ -1,5 +1,7 @@
 export const sortByIsCheck = (array) => {
-  console.log(array.sort((a, b) => (a.isCheck > b.isCheck) ? 1 : a.isCheck < b.isCheck ? -1 : 0));
-   array.sort((a, b) => (a.isCheck > b.isCheck) ? 1 : a.isCheck < b.isCheck ? -1 : 0);
-  
+  return array.sort((a, b) => (a.isCheck > b.isCheck) ? 1 : a.isCheck < b.isCheck ? -1 : 0);
+}
+
+export const sortByDate = (array) => {
+  return array.sort((a, b) => (a.creationTime > b.creationTime) ? 1 : a.creationTime < b.creationTime ? -1 : 0);
 }
