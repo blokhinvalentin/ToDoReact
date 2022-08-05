@@ -20,7 +20,7 @@ const MainPage = () => {
     try {
       const resp = await getTasks();
       if (resp.statusText === 'OK') {
-        setTasks(resp.data);
+        setTasks(sortByDateAndIsCheck(resp.data));
       }
     } catch (error) {
       setError('unable to get all tasks');
@@ -78,8 +78,6 @@ const MainPage = () => {
   useEffect(() => {
     getAllTasks();
   }, []);
-
-  console.log('tasks', tasks);
 
   return (
     <>
