@@ -30,7 +30,6 @@ const TaskEditing = () => {
     try {
       const resp = await confirmTaskEditing(id, text);
       if (resp.statusText === "OK") {
-        console.log(resp.data);
         setTask(resp.data);
         navigate("/tasks");
       }
@@ -59,7 +58,7 @@ const TaskEditing = () => {
         <button className="todo-list-button" onClick={() => saveTaskEditing(id)}>
           <img src={done} alt="" />
         </button>
-        
+
         <button className="todo-list-button" onClick={() => navigate("/tasks")}>
           <img src={close} alt="" />
         </button>
