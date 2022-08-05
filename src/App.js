@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/tasks" element={<MainPage/>} />
-      <Route path={`/tasks/:id/text`} element={<ChangeTextPage/>} />
+      <Route path={"/tasks/:id"} element={<ChangeTextPage/>} />
     </Routes>
   );
 }

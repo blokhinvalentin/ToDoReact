@@ -4,12 +4,7 @@ import "./style.scss";
 
 const Task = ({ task, handleCheckbox, removeTask, editTask }) => {
   return (
-    <div
-      className={
-        task.isCheck
-          ? "todo-list__task-container__checked"
-          : "todo-list__task-container__unchecked"
-      }
+    <div className={task.isCheck ? "todo-list__task-container__checked" : "todo-list__task-container__unchecked"}
       id={`container-${task._id}`}
     >
       <input
@@ -17,15 +12,9 @@ const Task = ({ task, handleCheckbox, removeTask, editTask }) => {
         onChange={() => handleCheckbox(task._id, task.isCheck)}
         checked={task.isCheck}
       />
-      <p
-        className={
-          task.isCheck
-            ? "todo-list__text-task todo-list__done-text"
-            : "todo-list__text-task"
-        }
-      >
-        {task.text}
-      </p>
+
+      <p className={ task.isCheck ? "todo-list__text-task todo-list__done-text" : "todo-list__text-task"}>{task.text}</p>
+      
       <button
         type="button"
         className={task.isCheck ? "todo-list__hide" : "todo-list-button edit"}

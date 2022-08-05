@@ -30,8 +30,9 @@ const TaskEditing = () => {
     try {
       const resp = await confirmTaskEditing(id, text);
       if (resp.statusText === "OK") {
-        navigate("/tasks");
+        console.log(resp.data);
         setTask(resp.data);
+        navigate("/tasks");
       }
     } catch (error) {
       setError("unable to update text");
@@ -46,10 +47,7 @@ const TaskEditing = () => {
     <div className="todo-list__single-page">
       <ShowError errorMessage={error} />
 
-      <div
-        className="todo-list__task-container container__unchecked"
-        id={`container-${id}`}
-      >
+      <div className="todo-list__task-container container__unchecked" id={`container-${id}`}>
         <input
           type="text"
           value={text}
@@ -57,17 +55,15 @@ const TaskEditing = () => {
           placeholder={task.text}
           autoFocus
         />
-        <button
-          className="todo-list-button"
-          onClick={() => saveTaskEditing(id)}
-        >
+
+        <button className="todo-list-button" onClick={() => saveTaskEditing(id)}>
           <img src={done} alt="" />
         </button>
+        
         <button className="todo-list-button" onClick={() => navigate("/tasks")}>
           <img src={close} alt="" />
         </button>
       </div>
-      
     </div>
   );
 };

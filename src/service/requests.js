@@ -9,4 +9,4 @@ export const deleteTask = async (id) => await axios.delete(`${url}/${id}`);
 
 export const changeCheckbox = async (id, check) => await axios.patch(`${url}/${id}/checkbox`, { isCheck: !check });
 
-export const confirmTaskEditing = async (id, text) => await axios.patch(`${url}/${id}/text`, { text });
+export const confirmTaskEditing = async (id, text) => await axios.patch(`${url}/${id}`, { text });

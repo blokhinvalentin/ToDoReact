@@ -7,12 +7,11 @@ import {
   changeCheckbox,
   deleteTask,
 } from '../../service/requests';
-import { sortByIsCheck, sortByDate } from '../../service/helpers';
+import { sortByDateAndIsCheck } from '../../service/helpers';
 import './style.scss';
 
 const MainPage = () => {
   const [tasks, setTasks] = useState([]);
-  const [sortableTasks, setSortableTasks] = useState([]);
   const [error, setError] = useState('');
   const [text, setText] = useState('');
   const navigate = useNavigate();
@@ -22,7 +21,6 @@ const MainPage = () => {
       const resp = await getTasks();
       if (resp.statusText === 'OK') {
         setTasks(resp.data);
-        setSortableTasks(resp.data);
       }
     } catch (error) {
       setError('unable to get all tasks');
@@ -33,8 +31,7 @@ const MainPage = () => {
     try {
       const resp = await addTask(text);
       if (resp.statusText === 'OK' && text !== '') {
-        setTasks([...tasks, resp.data]);
-        setSortableTasks(sortByIsCheck([...tasks, resp.data]));
+        setTasks(sortByDateAndIsCheck([...tasks, resp.data]));
         setText('');
         setError('');
       }
@@ -53,7 +50,7 @@ const MainPage = () => {
             break;
           }
         }
-        setSortableTasks(sortByIsCheck([...tasks]));
+        setTasks(sortByDateAndIsCheck([...tasks]));
         setError('');
       }
     } catch (error) {
@@ -66,7 +63,6 @@ const MainPage = () => {
       const resp = await deleteTask(id);
       if (resp.statusText === 'OK') {
         setTasks(tasks.filter((task) => task._id !== id));
-        setSortableTasks(sortableTasks.filter((task) => task._id !== id))
         setError('');
       }
     } catch (error) {
@@ -75,7 +71,7 @@ const MainPage = () => {
   };
 
   const editTask = (id) => {
-    navigate(`/tasks/${id}/text`, { replace: true });
+    navigate(`/tasks/${id}`, { replace: true });
     setError('');
   };
 
@@ -84,7 +80,6 @@ const MainPage = () => {
   }, []);
 
   console.log('tasks', tasks);
-  console.log('sortableTasks', sortableTasks);
 
   return (
     <>
@@ -96,7 +91,7 @@ const MainPage = () => {
       />
 
       <div className="todo-list__content-page">
-        {sortableTasks.map((task) => (
+        {tasks.map((task) => (
           <Task
             key={task._id}
             task={task}

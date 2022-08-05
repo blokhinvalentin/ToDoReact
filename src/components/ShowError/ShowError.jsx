@@ -1,7 +1,5 @@
 import './style.scss';
 
-const ShowError = ({ errorMessage }) => {
-  return <p className="error-red">{errorMessage}</p>;
-};
+const ShowError = ({ errorMessage }) => <p className="error-red">{errorMessage}</p>;
 
 export default ShowError;
