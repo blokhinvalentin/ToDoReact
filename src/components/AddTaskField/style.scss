@@ -1,0 +1,28 @@
+.todo-list__add-task-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: {
+    direction: column;
+  }
+  margin-bottom: 30px;
+}
+
+.add-task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: {
+    direction: column;
+  }
+
+  & button {
+    margin: {
+      top: 15px;
+    }
+    font: {
+      size: 17px;
+    }
+    padding: 5px 35px;
+  }
+}
